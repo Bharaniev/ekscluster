@@ -30,12 +30,12 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
   assume_role {
-    role_arn = "arn:aws:iam::618826489558:role/gks_devops"
+    role_arn = "arn:aws:iam::618*:role/g_devops"
   }
   default_tags {
     tags = {
-      Project         = "GKS"
-      ManagedBy       = "gks.devops@vodafone.com"
+      Project         = "eks"
+      ManagedBy       = "bh@one.com"
       TaggingVersion  = "V2.4"
       Confidentiality = "C3"
       Environment     = "TEST"
@@ -60,7 +60,7 @@ provider "kubernetes" {
 module "vpc_resources" {
   source = "./modules/vpc"
   project = "eks"
-  tenantaccount = "618826489558"
+  tenantaccount = "618*"
   environment = "dev"
 }
 
