@@ -1,0 +1,19 @@
+name: "01-EKSCLUSTER"
+on:
+  workflow_dispatch:
+
+jobs:
+  Plan:
+    uses: Bharaniev/ekscluster/.github/workflows/aws_tf_plan.yml@main
+    with:
+      gh_environment: dev
+    secrets:
+      cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
+
+  Apply:
+    needs: Plan
+    uses: Bharaniev/ekscluster/.github/workflows/aws_tf_appy.yml@main
+    with:
+      gh_environment: dev
+    secrets:
+      cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
